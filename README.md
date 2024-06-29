@@ -1,1 +1,1 @@
-# Bayesian clock model selection
+# Bayesian rate model selection
