@@ -2,12 +2,13 @@
 #' Simulating evolutionary rates and branch lengths along a phylogeny 
 #' under strict clock and relaxed clock models - 
 #' 
-#' The \code{model} have three model settings such as "clk", "iln", "gbm_RY07",
-#' for the strict clock (constant rates along the phylogeny), 
+#' The \code{model} with the option "clk" denotes the strict clock model, and 
+#' the \code{model == "iln"} and \code{model == "gbm"} denotes the options for
 #' the independent log-normal rates (independent rates along the phylogeny), and
-#' geometric-Brownian motion rates (autocorrelated rates along the phylogeny)
+#' geometric-Brownian motion rates (autocorrelated rates along the phylogeny).
 #' 
-#' @include tree_fig1_sim.tree 
+#' 
+#' @include tree_fig1_sim.tree
 #' 
 #' @param tree an object of class phylo
 #' @param N numeric, the number of nucleotide sequence length
@@ -15,20 +16,23 @@
 #' @param model character, the relaxed clock model
 #' @param rate numeric, the mean rate in substitutions per site
 #' 
-#' @param sigma_sv numeric, the rate "diffusion" parameter for the relaxed 
-#' clocks sampled from gamma(2/L,2/L)
+#' @param sigma_sv numeric, the log-variance or rate "diffusion" parameter 
+#' for the relaxed clocks sampled using 'rgamma(2/L,2/L)' function. 
 #' 
 #' @param sigma_cl numeric, the rate "diffusion" parameter for the relaxed 
-#' clocks sampled from gamma(2/L,20/L)
+#' clocks sampled using 'rgamma(2/L,20/L)' function.
 #' 
 #' @details
-#' To simulate mean rate, one can use 'rgamma()' function to generate mean
-#' The 'simclock' R package can be used to generate phylogenetic trees 
-#' under the respective model. The \code{model == clk} does not require 
-#' sigma^2 or log-variance parameter, while both log-variance and mean rates
-#' are simulated, when \code{model == "iln"} or \code{model == "gbm"} is used.
-#' See the implementation of 'simclock' R package published in 
-#' https://github.com/dosreislab/simclock. 
+#' To simulate mean rates and log-variance for each loci/partition, 
+#' one can use 'rgamma()' function to generate for N number of samples. 
+#' Using the sampled rates and variances, The 'simclock::relaxed.tree' function
+#' from 'simclock' R package (https://github.com/dosreislab/simclock) can be 
+#' used to generate simulated phylogenetic trees with branch lengths under 
+#' strict clock and relaxed clock models. The option \code{model == "clk"} does 
+#' not require sigma_sv or sigma_cl parameters, while both variance and rates 
+#' are simulated for options \code{model == "iln"} and \code{model == "gbm"}. 
+#' 
+#' @authors Muthubioinfo
 
 
 #'Install 'simclock' package from github: https://github.com/dosreislab/simclock
@@ -53,13 +57,14 @@ colnames(sigma_sv) <- paste("L",1:L,sep = "")
 sigma_cl <- data.frame(matrix(ncol = L, nrow = N)) 
 colnames(sigma_cl) <- paste("L",1:L,sep = "")
 
-#' Sample rate and sigma^2 from gamma distribution for each Loci
-#' and generate trees under different five clock model settings -
-#' STR - Strict clock model
-#' ILN-SV - Independent log-normal distribution with seriously violated rates
-#' ILN-CL - Independent log-normal distribution with clock-like rates
-#' GBM-SV - Geometric Brownian motion with serious violation
-#' GBM-CL - Geometric Brownian motion with clock-like
+#' Sample rate and sigma^2 from gamma distribution for each L loci
+#' and generate trees under different five different clock model settings -
+#' Strict clock model (str_clock)
+#' Independent log-normal distribution with serious violation (iln_clock_sv)
+#' Independent log-normal distribution with clock-like rates (iln_clock_cl)
+#' Geometric Brownian motion with serious violation (gbm_clock_sv)
+#' Geometric Brownian motion with clock-like (gbm_clock_cl)
+
 for (i in 1:N) {
   rate[i] <- rgamma(N, shape = 2/L, rate = 2/L)
   sigma_sv[i] <- rgamma(N, shape = 2/L, rate = 2/L) # Seriously-violated
