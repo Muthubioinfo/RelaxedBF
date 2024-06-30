@@ -32,7 +32,8 @@
 #' not require sigma_sv or sigma_cl parameters, while both variance and rates 
 #' are simulated for options \code{model == "iln"} and \code{model == "gbm"}. 
 #' 
-#' @authors Muthubioinfo
+#' @authors Muthukumaran Panchaksaram and Lucas Freitas
+#'
 
 
 #'Install 'simclock' package from github: https://github.com/dosreislab/simclock
@@ -64,11 +65,16 @@ colnames(sigma_cl) <- paste("L",1:L,sep = "")
 #' Independent log-normal distribution with clock-like rates (iln_clock_cl)
 #' Geometric Brownian motion with serious violation (gbm_clock_sv)
 #' Geometric Brownian motion with clock-like (gbm_clock_cl)
+#' For example, L = 5 and N = 1000, then the following output generates a 
+#' total of 25,000 trees.
+
+for (i in 1:L) {
+rate[i] <- rgamma(N, shape = 2/L, rate = 2/L)
+sigma_sv[i] <- rgamma(N, shape = 2/L, rate = 2/L) # Seriously-violated
+sigma_cl[i] <- rgamma(N, shape = 2/L, rate = 20/L) # Clock-like
+}
 
 for (i in 1:N) {
-  rate[i] <- rgamma(N, shape = 2/L, rate = 2/L)
-  sigma_sv[i] <- rgamma(N, shape = 2/L, rate = 2/L) # Seriously-violated
-  sigma_cl[i] <- rgamma(N, shape = 2/L, rate = 20/L) # Clock-like
   
   for (j in 1:L) {
     str_clock <- simclock::relaxed.tree(tree_fig1, model = "clk", r = rate[[j]][i])
