@@ -2,11 +2,6 @@
 #' Simulating evolutionary rates and branch lengths along a phylogeny 
 #' under strict clock and relaxed clock models - 
 #' 
-#' The \code{model} with the option "clk" denotes the strict clock model, and 
-#' the \code{model == "iln"} and \code{model == "gbm"} denotes the options for
-#' the independent log-normal rates (independent rates along the phylogeny), and
-#' geometric-Brownian motion rates (autocorrelated rates along the phylogeny).
-#' 
 #' 
 #' @include tree_fig1_sim.tree
 #' 
