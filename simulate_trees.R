@@ -2,10 +2,7 @@
 #' Simulating evolutionary rates and branch lengths along a phylogeny 
 #' under strict clock and relaxed clock models - 
 #' 
-#' The \code{model} with the option "clk" denotes the strict clock model, and 
-#' the \code{model == "iln"} and \code{model == "gbm"} denotes the options for
-#' the independent log-normal rates (independent rates along the phylogeny), and
-#' geometric-Brownian motion rates (autocorrelated rates along the phylogeny).
+#' 
 #' 
 #' 
 #' @include tree_fig1_sim.tree
@@ -28,9 +25,14 @@
 #' Using the sampled rates and variances, The 'simclock::relaxed.tree' function
 #' from 'simclock' R package (https://github.com/dosreislab/simclock) can be 
 #' used to generate simulated phylogenetic trees with branch lengths under 
-#' strict clock and relaxed clock models. The option \code{model == "clk"} does 
-#' not require sigma_sv or sigma_cl parameters, while both variance and rates 
-#' are simulated for options \code{model == "iln"} and \code{model == "gbm"}. 
+#' strict clock and relaxed clock models. The \code{model} with option "clk" 
+#' denotes the strict clock model, and the \code{model == "iln"} and 
+#' \code{model == "gbm"} denotes the options for the independent log-normal 
+#' rates (independent rates along the phylogeny), and geometric-Brownian motion 
+#' rates (autocorrelated rates along the phylogeny). 
+#' The option \code{model == "clk"} does not require sigma_sv or sigma_cl 
+#' parameters, while both variance and rates are simulated for options 
+#' \code{model == "iln"} and \code{model == "gbm"}. 
 #' 
 #' @authors Muthukumaran Panchaksaram and Lucas Freitas
 #'
