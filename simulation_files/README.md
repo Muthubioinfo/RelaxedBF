@@ -10,8 +10,7 @@ Times Under a Molecular Clock Using Multiple Fossil Calibrations with Soft Bound
 to "simulate_trees_..._loci.R" to simulate rates in the phylogeny under different loci settings, loci = 1, 2, and 5, and generate phylogenetic trees informed with branch lengths under different rate models. These R scripts uses 'simclock' package available in 
 https://github.com/dosreislab/simclock.
 
-The simulated phylogenetic trees can then be used in "MCbase.dat" to generate molecular sequence alignments using the evolver program in PAML package. Then, these alignments can be used to estimate the marginal likelihood under each rate model (STR, ILN and GBM). 
-See tutorial of marginal likelihood estimation in https://dosreislab.github.io/2017/10/24/marginal-likelihood-mcmc3r.html
+The simulated phylogenetic trees can then be used in "MCbase.dat" to generate molecular sequence alignments using the evolver program in PAML package. The nucleotide substitution model is JC69 model (Jukes and Cantor, 1969). Then, these alignments can be used to estimate the marginal likelihood under each rate model (STR, ILN and GBM). See tutorial of marginal likelihood estimation in https://dosreislab.github.io/2017/10/24/marginal-likelihood-mcmc3r.html
 
 The ctl_files contains the control files for 'MCMCTree' program to carry out the marginal likelihood estimation.  
 For each rate model setting (i.e., str_nn, iln_sv, iln_cl, gbm_sv and gbm_cl), there are 1-8 stepping-stones with one control file 
