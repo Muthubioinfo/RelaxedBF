@@ -5,8 +5,8 @@
 -1         * <tree length, use -1 if tree below has absolute branch lengths>
 
 
-####PASTE A SIMULATED PHYLOGENETIC TREE FROM "simulate_trees_1_.loci_.R" ####
-#For example, one sample tree simulated under geometric Brownian motion with seriously violated rates
+#### PASTE A SIMULATED PHYLOGENETIC TREE FROM "simulate_trees_...._.loci_.R" ####
+# For example, one sample tree simulated under geometric Brownian motion with seriously violated rates is shown below
 
 (((a:0.0184966183,b:0.02026485606):0.2107168586,((c:0.06924184948,d:0.04844360568):0.1302934915,e:0.06541060967):0.08496058032):0.2722450652,(f:0.4590999185,(g:0.1511177529,(h:0.009501070161,i:0.0116700588):0.06711025149):0.288649825):0.262573091);
 
