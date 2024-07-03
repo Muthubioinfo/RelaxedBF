@@ -1,3 +1,6 @@
+# Simulating Bayesian rate models
+
+
 This folder contains the input files used for simulating rates along the phylogenetic trees and 
 generate sequence alignments under the different rate models - Strict clock, Independent log-normal and geometric brownian motion.
 The results for this analysis can be found in "simulation_results.zip".
