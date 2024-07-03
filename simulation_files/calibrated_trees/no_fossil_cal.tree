@@ -1,0 +1,5 @@
+# No fossil calibration
+
+9 1
+
+(((a,b),((c,d),e)),(f,(g,(h,i))))'B(0.999, 1.001)';

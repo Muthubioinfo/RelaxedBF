@@ -1,0 +1,6 @@
+# Bad fossil calibration
+
+9 1
+
+(((a,b),((c,d),e)'B(0.5,0.6)'),(f,(g,(h,i))))'B(0.6,0.8)';
+
