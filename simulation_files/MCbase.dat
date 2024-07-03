@@ -1,0 +1,19 @@
+1     * 0,1:seqs or patterns in paml format (mc.paml); 2:paup format (mc.nex); 3: paup JC69 format
+ -1  * random number seed (odd number)
+
+9 1000 1  * <# seqs>  <# nucleotide sites>  <# replicates>
+-1         * <tree length, use -1 if tree below has absolute branch lengths>
+
+
+####PASTE A SIMULATED PHYLOGENETIC TREE FROM "simulate_trees_1_.loci_.R" ####
+#For example, one sample tree simulated under geometric Brownian motion with seriously violated rates
+
+(((a:0.0184966183,b:0.02026485606):0.2107168586,((c:0.06924184948,d:0.04844360568):0.1302934915,e:0.06541060967):0.08496058032):0.2722450652,(f:0.4590999185,(g:0.1511177529,(h:0.009501070161,i:0.0116700588):0.06711025149):0.288649825):0.262573091);
+
+
+0          * model: 0:JC69, 1:K80, 2:F81, 3:F84, 4:HKY85, 5:T92, 6:TN93, 7:REV
+1 * kappa or rate parameters in model
+*0.2500  0     * <alpha>  <#categories for discrete gamma>
+
+0.25  0.25  0.25  0.25    * base frequencies
+  T        C        A        G
