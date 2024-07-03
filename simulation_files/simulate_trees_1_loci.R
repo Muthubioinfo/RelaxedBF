@@ -40,7 +40,7 @@ library('simclock')
 library('ape')
 
 #' Read main tree topology. Tree source obtained from Figure 3 of Rannala & Yang 2007. ##
-tree_fig1 <- ape::read.tree("tree_fig1_sim.tree")
+tree_fig1 <- ape::read.tree("tree_fig1_sim.trees")
 
 #' Define the number of nucleotide sequence length and the number of loci to be simulated.
 N <- 1000 #Number of nucleotides
