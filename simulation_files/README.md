@@ -1,4 +1,4 @@
-# Simulating Bayesian rate models
+# Simulation under rate models
 
 
 This folder contains the input files used for simulating rates along the phylogenetic trees and 
