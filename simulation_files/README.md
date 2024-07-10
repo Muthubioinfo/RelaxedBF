@@ -4,7 +4,8 @@
 This folder contains the input files used for simulating rates along the phylogeny and 
 generate corresponding molecular sequence alignment under the different rate models such as
 Strict clock (STR), Independent log-normal (ILN) and geometric brownian motion (GBM).
-All the results for this analysis is in "simulation_results.zip".
+
+The results for the simulation analysis is in directory called "simulation_results".
 
 The "tree_fig1_sim.trees" is obtained from figure 3 of Yang and Rannala (2006), "Bayesian Estimation of Species Divergence 
 Times Under a Molecular Clock Using Multiple Fossil Calibrations with Soft Bounds". This "tree_fig1_sim.trees" is used as input in "simulate_trees_..._loci.R" to simulate rates in the phylogeny under different loci, L = 1, 2, and 5, and generate phylogenetic trees informed with branch lengths under different rate models. These R scripts uses 'simclock' package by Mario dos Reis, available in 
