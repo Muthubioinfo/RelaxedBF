@@ -1,7 +1,8 @@
 # Bayesian clock model selection
 This repository contains the files used to recreate all the analysis in Bayesian clock/relaxed clock model selection paper.
 
-The user is required to have R/Rstudio for simulation analysis and install PAML package for Bayesian model selection analysis for both the simulated and empirical datasets.
+The user is required to have R/Rstudio and install EVOLVER, BASEML and MCMCTree programs available in PAML package [http://abacus.gene.ucl.ac.uk/software/paml.html](http://abacus.gene.ucl.ac.uk/software/paml.html). 
+Use bash/LINUX commands to run PAML programs.
 
 (1) The "simulate_trees.R" is used to simulate phylogenies with branch lengths under the different rate models - Strict clock (STR), Independent-log normal seriously violated or clock-like (ILN-SV or ILN-CL) and geometric brownian motion serious violated or clock-like (GBM-SV or GBM-CL). The "tree_fig1_sim.tree" is called as an input to "simulate_tree.R".
 
