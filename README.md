@@ -81,7 +81,7 @@ For the MCMCTree analysis for marginal likelihood estimation, the ```.trees``` a
 
 The primate dataset are obtained from [dos Reis et al. 2018](https://academic.oup.com/sysbio/article/67/4/594/4802240) that consisting of six alignment partitions each with around 372 primates 
 
-The given dataset has six alignment partitions.
+The given dataset has six alignment partitions. 
 
 | Partitions (.phy)  |   Number of species  | Dataset                                      |
 | ------------------ | -------------------- | -------------------------------------------- |
@@ -92,9 +92,7 @@ The given dataset has six alignment partitions.
 | Partition 5        |        239           | Nuclear 3rd codon positions                  |
 | Partition 6        |        220           | Nuclear noncoding segments (UTR and introns) |
 
-
-The ```.phy``` file represents the alignment files, and ".tree" files are rerooted trees for each partition when no calibrations 
-with the root branch calibrated with ```B(0.999,1.001)``` are considered in the analysis. Also enclosed the ```.ctl``` files for each likelihood approximate method (```ARCSIN```, ```SQRT```, ```LOG``` and ```NT```).
+For Bayesian model selection analysis, users should analyse each alignment (```.phy```) with the corresponding ```.trees``` calibrated with ```B(0.999,1.001)``` at the root branch. These files are in the "primate_dataset" directory. The control files for MCMCTree is also found (```.ctl```) for each likelihood approximation transformation (```ARCSIN```, ```SQRT```, ```LOG``` and ```NT```).
 
 
 ### Plant dataset
@@ -102,16 +100,16 @@ with the root branch calibrated with ```B(0.999,1.001)``` are considered in the 
 The [plant dataset](https://github.com/Muthubioinfo/RelaxedBF/tree/main/plant_dataset) is obtained from [Barba-Montoya et al. 2018](https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.15011). This is the largest dataset that has been tested for Bayesian model selection with 644 flowering plants including tracheophytes and Angiosperms.
 
 
-From the given dataset, there are three alignment partitions (See table 2 in above cited paper).
+From the given dataset, there are three alignment partitions.
 
 | Partitions (.phy)  | Number of species  | Dataset                                      | 
 | ------------------ | ------------------ | -------------------------------------------- |
-| Partition 1         |        643         | Plastid 1st and 2nd codon position           |
+| Partition 1        |        643         | Plastid 1st and 2nd codon position           |
 | Partition 2        |        515         | Mitochondrial 1st and 2nd codon position     |
 | Partition 3        |        540         | Nuclear RNA                                  |
 
 
-The alignment files are represented as ```partition1.phy```, ```partition2.phy``` and ```partition3.phy``` files and ".tree" files are rerooted trees for each partition, and tested bayesian model selection when the root is calibrated with 'B(0.999,1.001)' 
+The three partitioned alignments are ```partition1.phy```, ```partition2.phy``` and ```partition3.phy``` files with ```.trees``` calibrated with B(0.999,1.001) at the root. Use the ```.ctl``` to run MCMCTree program to analyse for Bayesian model selection.
 
 ## References
                                                   
