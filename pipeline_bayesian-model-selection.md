@@ -64,7 +64,7 @@ echo $value >> $path/lnmax.txt
 printf "done"
 ```
 
-Step-2: Prepare files for marginal likelihood estimation using approximate likelihood methods - ```ARCSIN``` ```SQRT``` ```LOG``` and ```NT```.
+## Step-2: Prepare files for marginal likelihood estimation using approximate likelihood methods - ```ARCSIN``` ```SQRT``` ```LOG``` and ```NT```.
 
 Specify location of ```bvalstep64.R```. This Rfile helps create ```n``` directories (for n beta points) to run mcmctree to estimate marginal likelihood at ```n``` stepping stones. In all the ```n``` directories, ```mcmctree.ctl``` file is created specified with a prior for each ```$\beta``` point. 
 
@@ -200,7 +200,7 @@ printf "done"
 
 ```
 
-Step-3: Run ```MCMCTree``` to estimate marginal likelihood under the relaxed clock models - strict clock (STR), independent log-normal (ILN) and geometric brownian motion (GBM). 
+## Step-3: Run ```MCMCTree``` to estimate marginal likelihood under the relaxed clock models - strict clock (STR), independent log-normal (ILN) and geometric brownian motion (GBM). 
 Note that likelihood approximations are less to estimate marginal likelihood under strick clock models. Hence, use approximate likelihood for relaxed clock models only.
 
 Use array jobs to run ```MCMCTree``` to efficiently save computational time.
