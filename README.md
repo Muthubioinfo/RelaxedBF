@@ -1,5 +1,5 @@
-# Bayesian clock model selection
-This repository provides the full pipeline and data used in the analyses from the study on **Bayesian selection of relaxed-clock models** in phylogenetic inference.
+# Bayesian rate model selection
+This repository provides the pipeline to study **Bayesian selection of relaxed-clock models**.
 
 ## 📦 Requirements
 
