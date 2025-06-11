@@ -1,10 +1,9 @@
 # Bayesian rate model selection
 This repository provides the pipeline to study **Bayesian selection of relaxed-clock models**.
 
-## 📦 Requirements
+# 📦 Requirements
 
 Please install the following tools:
-
 - [R / RStudio](https://cran.r-project.org/)
 - [PAML package (EVOLVER, BASEML, MCMCTree)](http://abacus.gene.ucl.ac.uk/software/paml.html)
 - UNIX/Linux environment for bash scripting
