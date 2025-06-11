@@ -1,14 +1,22 @@
 # Bayesian clock model selection
-This repository contains the files used to recreate all the analysis from Bayesian Selection of Relaxed-clock model selection paper.
+This repository provides the full pipeline and data used in the analyses from the study on **Bayesian selection of relaxed-clock models** in phylogenetic inference.
 
-The users are required to install R/Rstudio and ```EVOLVER```, ```BASEML``` and ```MCMCTree``` programs available in ```PAML``` package, see [http://abacus.gene.ucl.ac.uk/software/paml.html](http://abacus.gene.ucl.ac.uk/software/paml.html). Use bash/LINUX commands to run PAML programs.
+## 📦 Requirements
+
+Please install the following tools:
+
+- [R / RStudio](https://cran.r-project.org/)
+- [PAML package (EVOLVER, BASEML, MCMCTree)](http://abacus.gene.ucl.ac.uk/software/paml.html)
+- UNIX/Linux environment for bash scripting
 
 <br/>
 
 ## Simulating Phylogenetic alignments under the clock and Relaxed-clock models
 
-Run the Rscript "simulate_trees.R" to simulate phylogenies with branch lengths under the different rate model settings (shown below), for a given tree topology called "tree_fig1_sim.tree".
-This input phylogeny was obtained from figure 3 of the [Rannala and Yang (2007)](https://academic.oup.com/sysbio/article/56/3/453/1657118). 
+## 🧬 Step 1: Simulating phylogenetic trees under relaxed-clock models:
+
+In the first step, sample the parameters rates, ```r``` and rate drift, ``` $\sigma^2$ ``` from gamma distribution for _L_ number of Loci.
+Then, for a given input tree topology called "tree_fig1_sim.tree" (obtained from figure 3 of the [Rannala and Yang (2007)](https://academic.oup.com/sysbio/article/56/3/453/1657118)), simulate phylogenies with branch lengths under different rate model settings: 
 
 * Strict clock (```STR```)
 * Independent-log normal seriously violated rates (```ILN-SV```)
@@ -16,20 +24,36 @@ This input phylogeny was obtained from figure 3 of the [Rannala and Yang (2007)]
 * Geometric brownian motion serious violated (```GBM-SV```)
 * Geometric brownian motion clock-like (```GBM-CL```)
 
-Simulate trees under five rate model configurations (STR, ILN-CL, ILNSV, GBM-CL, GBM-SV) and three locus configurations _L_ = 1, 2 and 5.
+Run the Rscript ```simulate_trees.R```, to generate output of phylogenies,
 
-Then, simulate nucleotide alignments for the 15,000 simulated trees using the ```EVOLVER``` program from ```PAML``` with the [MCbase.dat](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/MCbase.dat) control file. The nucleotide substitution model is JC69 model (Jukes and Cantor, 1969), assuming uniform codon frequencies. The output of ```EVOLVER``` generates nucleotide sequence alignments corresponding for each of the 1,000 trees under each rate model setting.
+```
+Rscript simulate_trees.R
 
+```
+
+Three different Loci, _L_ = 1, 2 and 5 are simulated each under five rate model configurations (STR, ILN-CL, ILNSV, GBM-CL, GBM-SV), we get 
+3 x 5 = 15 trees. As in (paper)[https://academic.oup.com/sysbio/article-abstract/74/2/323/7906181?redirectedFrom=fulltext&login=false] For repeating simulation of _N_ = 1000, we get a total of 15,000 trees as output.
+
+## 🧬 Step 2: Simulating Phylogenetic Alignments
+Then, simulate nucleotide alignment for each of the 15,000 simulated trees using the ```EVOLVER``` program from ```PAML``` using the [MCbase.dat](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/MCbase.dat) control file. The nucleotide substitution model is JC69 model (Jukes and Cantor, 1969), assuming uniform codon frequencies. The output of ```EVOLVER``` generates nucleotide sequence alignments corresponding for each of the 1,000 trees under each rate model setting.
 
 <br/>
 
+## Step 3: Bayesian rate model selection
+For Bayesian model selection of rate models, estimate the marginal likelihood of each true rate model (STR, ILN and GBM)
 
-## Bayesian rate model selection and rate prior
-The directory ["simulation_files"](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files) contains the input files used for MCMCTree analysis. This includes [mcmctree.ctl](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/ctl_files_mcmctree/iln_sv) and the [calibrated.tree](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/calibrated_trees) files are used for analysing under different calibration setting ( [slightly misspecified calibrations](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/slightly_misp_cal.tree), [badly misspecified calibrations](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/bad_misp_cal.tree), and under [no calibration](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/no_fossil_cal.tree). 
+For example, if the simulations are under ILN-SV, then marginal likelihoods should be estimated under STR, ILN-SV and GBM-SV. 
+And if the simulations are under ILN-SV, then marginal likelihoods should be estimated under STR, ILN-SV and GBM-SV.
+The directory ["simulation_files"](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files) contains all the input files used for MCMCTree analysis. This includes [mcmctree.ctl](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/ctl_files_mcmctree),
+Use the appropriate [control files](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/ctl_files_mcmctree) for each rate model setting. The [calibrated.tree](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/calibrated_trees) files are used for analysing simulations under different the following calibrations, (see figure 1 in [paper](https://academic.oup.com/sysbio/article-abstract/74/2/323/7906181?redirectedFrom=fulltext&login=false) :
+
+- ( [slightly misspecified calibrations](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/slightly_misp_cal.tree),
+- [badly misspecified calibrations](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/bad_misp_cal.tree),
+- [no calibration](https://github.com/Muthubioinfo/RelaxedBF/blob/main/simulation_files/calibrated_trees/no_fossil_cal.tree). 
 
 <br/>
 
-## Simulation results 
+### Simulation results 
 
 The supplementary results from the simulation analysis are in [simulation_files](https://github.com/Muthubioinfo/RelaxedBF/tree/main/simulation_files/simulation_results).
 
@@ -39,15 +63,13 @@ The [Table_simulation_analysis_full_headings.xlsx](https://github.com/Muthubioin
 
 ## Approximating marginal likelihood using real datasets
 
-This section focus on testing the likelihood approximation methods for marginal likelihood estimation for faster Bayesian model selection. There are four different ways to approximate likelihood based on the parameter transformations using ```ARCSIN```, ```SQRT```, ```LOG``` and ```NT```. Best approaches are ```ARCSIN``` and ```SQRT```, which provide the best approximations. See [dos Reis et al. 2011](https://academic.oup.com/mbe/article/28/7/2161/1051613) for more details on the applications and implementation of these approximations in MCMCTree program.
+Likelihood approximation methods can provide a more faster and efficient way to estimate marginal likelihood for Bayesian model selection. There are four different methods to approximate likelihood based on the parameter transformations using ```ARCSIN```, ```SQRT```, ```LOG``` and ```NT```. Best approaches are ```ARCSIN``` and ```SQRT```, which provide the best approximations. See [dos Reis et al. 2011](https://academic.oup.com/mbe/article/28/7/2161/1051613) for more details on the applications and implementation of these approximations in MCMCTree program.
 
-
-Three datasets were tested here,
+Three empirical datasets were tested here -
 
 ### Small dataset 
 
 The "[small_dataset](https://github.com/Muthubioinfo/RelaxedBF/tree/main/small_dataset)" directory contains 13 alignment files used to test Bayesian model selection to compare exact likelihood and approximate likelihood methods. The first three alignments align1.phy, align2.phy and align3.phy in "Mito_primate_1-3.zip" is obtained from [Yang and Rannala (2006)](https://academic.oup.com/mbe/article/23/1/212/1193630). These are three partitioned alignments of seven ape mitochondrial genomes. The remaining ten alignments are align4.phy, align5.phy, ... and align13.phy are the the ten protein-coding (first and second codon positions) gene alignments of 72 mammalian genomes obtained from [Álvarez-Carretero et al. 2022](https://www.nature.com/articles/s41586-021-04341-1). The gene names of the protein-coding genes from reference human genome are provided below along with their ensemble IDs. 
-
 
 Alignments obtained from [Yang and Rannala (2006)](https://academic.oup.com/mbe/article/23/1/212/1193630) consisting of seven ape mitochondrial genomes partitioned based on the three codon positions (c.p.) 
 
@@ -56,7 +78,6 @@ Alignments obtained from [Yang and Rannala (2006)](https://academic.oup.com/mbe/
 | align1.phy       |	Mitochondrial genome (1st c.p.)           |   
 | align2.phy       |	Mitochondrial genome (2nd c.p.)           | 
 | align3.phy       |	Mitochondrial genome (3rd c.p.)           |  
-
 
 Dataset of ten protein-coding gene alignments (1st and 2nd codon positions) obtained from [Álvarez-Carretero et al. (2022)](https://www.nature.com/articles/s41586-021-04341-1) that consists of 72 mammal genomes. 
 
