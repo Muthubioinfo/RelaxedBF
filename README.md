@@ -16,8 +16,7 @@ Please install the following tools:
 
 ## 🧬 Step 1: Simulating phylogenetic trees under relaxed-clock models:
 
-In the first step, sample the parameters rates, ```r``` and rate drift, ``` $\sigma^2$ ``` from gamma distribution for _L_ number of Loci.
-Then, for a given input tree topology called "tree_fig1_sim.tree" (obtained from figure 3 of the [Rannala and Yang (2007)](https://academic.oup.com/sysbio/article/56/3/453/1657118)), simulate phylogenies with branch lengths under different rate model settings: 
+In the first step, sample the parameters rates, ```r``` and rate drift, sigma2 from gamma distribution for _L_ number of Loci. Use ```rgamma(N, shape = 2/L, rate = 2/L)``` for _L_ times to generate rates for G(2/L,2/L) and sigma2 that accounts for seriously violations or variations of rates. If variation or sigma2 is clock-like, use ```rgamma(N, shape = 2/L, rate = 20/L)```. Then, for a given input tree topology called "tree_fig1_sim.tree" (obtained from figure 3 of the [Rannala and Yang (2007)](https://academic.oup.com/sysbio/article/56/3/453/1657118)), simulate phylogenies with branch lengths under different rate model settings: 
 
 * Strict clock (```STR```)
 * Independent-log normal seriously violated rates (```ILN-SV```)
@@ -25,8 +24,9 @@ Then, for a given input tree topology called "tree_fig1_sim.tree" (obtained from
 * Geometric brownian motion serious violated (```GBM-SV```)
 * Geometric brownian motion clock-like (```GBM-CL```)
 
-Run the Rscript ```simulate_trees.R```, to generate output of phylogenies,
+Then, use the ```simclock::relaxed.tree()``` function from 'simclock' R package.
 
+The Rscript for step-1 is in ```simulate_trees.R``` to generate output of phylogenies. Hence, run as below,
 ```
 Rscript simulate_trees.R
 
