@@ -1,7 +1,9 @@
 # Bayesian rate model selection
-This is a pipeline to study **Bayesian selection of relaxed-clock models**.
-Use ```pipeline_bayesian-model-selection.md``` to run Bayesian model selection for your sequence alignment.
+This is a repository contains the steps to recreate all the analysis in the paper titled "[Bayesian Selection of Relaxed-Clock Models: Distinguishing between Independent and Autocorrelated Rates](https://academic.oup.com/sysbio/article-abstract/74/2/323/7906181?redirectedFrom=fulltext)"
 
+Authors: Muthukumaran Panchaksaram, Lucas Freitas and Mario dos Reis.
+
+To apply Bayesian clock model selection to choose the appropriate clock/relaxed clock mode. Use the ```pipeline_bayesian-model-selection.md``` to directly run Bayesian model selection for your candidate sequence (or phylogenome) alignment with determined tree topology.
 
 # 📦 Requirements
 
