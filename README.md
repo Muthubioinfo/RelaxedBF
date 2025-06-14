@@ -1,5 +1,5 @@
 # Bayesian rate model selection
-This repository provides the pipeline to study **Bayesian selection of relaxed-clock models**.
+This provides the pipeline to study **Bayesian selection of relaxed-clock models**.
 Use ```pipeline_bayesian-model-selection.md``` to run Bayesian model selection for your sequence alignment.
 
 
