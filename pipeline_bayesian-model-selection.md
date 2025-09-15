@@ -1,5 +1,5 @@
 # Pipeline for Bayesian relaxed clock model selection
-This is a pipeline to determine appropriate clock model (strict clock, independent log-normal and geometric brownian motion) suitable to your sequence alignment for Bayesian divergence time estimation. 
+This is a pipeline to determine appropriate clock model (strict clock, independent log-normal and geometric brownian motion) suitable to your sequence alignment for Bayesian divergence time estimation across phylogenetic tree
 
 ## Requirements
 1) Sequence alignment, e.g., `sequence_alignment.phy`
